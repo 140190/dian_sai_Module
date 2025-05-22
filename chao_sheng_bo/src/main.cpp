@@ -1,18 +1,23 @@
 #include <Arduino.h>
+#include "measureDistance.hpp"
 
-// put function declarations here:
-int myFunction(int, int);
+
+
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);
+  Distance_init();
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  float distance = measureDistance();
+  // 打印距离
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  delay(1000);
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}
+
